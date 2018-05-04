@@ -2,7 +2,6 @@ package com.think.core.java.mix;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -25,12 +24,14 @@ public class PersonSort{
         System.out.println("Sorted Natural by First Name: "+personList);
 
         //sort by occupation
-        Collections.sort(personList, new Comparator() {
+       /* Collections.sort(personList, new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
                 return ((Person)o1).getOccupation().compareTo(((Person)o2).getOccupation());
             }
-        });
+        });*/
+
+        Collections.sort(personList, (o1, o2) -> ((Person) o1).getOccupation().compareTo(((Person) o2).getOccupation()));
         System.out.println("Sorted By Ocuupation: "+personList);
 
     }
@@ -42,6 +43,14 @@ class Person implements Comparable{
     private String name;
     private String lastName;
     private String occupation;
+
+    public Person(int age, String name, String lastName, String occupation) {
+        this.age = age;
+        this.name = name;
+        this.lastName = lastName;
+
+        this.occupation = occupation;
+    }
 
     @Override
     public String toString() {
@@ -90,14 +99,6 @@ class Person implements Comparable{
         result = 31 * result + lastName.hashCode();
         result = 31 * result + (occupation != null ? occupation.hashCode() : 0);
         return result;
-    }
-
-    public Person(int age, String name, String lastName, String occupation) {
-        this.age = age;
-        this.name = name;
-        this.lastName = lastName;
-
-        this.occupation = occupation;
     }
 
     @Override

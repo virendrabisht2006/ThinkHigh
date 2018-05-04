@@ -7,9 +7,9 @@ public class StringTest {
     public static void main(String[] args) {
         String str1="Virendra";
 
-       // String str2= new String("Virendra");
+        String str2 = new String("Virendra");
 
-        String str2= "Virendra";
+        //String str2= "Virendra";
 
         System.out.println(str1==str2);
 

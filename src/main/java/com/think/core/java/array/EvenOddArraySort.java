@@ -2,7 +2,6 @@ package com.think.core.java.array;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Objects;
 
 /**
  * Created by esha on 16/03/17.
@@ -20,10 +19,10 @@ public class EvenOddArraySort {
             public int compare(Integer o1, Integer o2) {
 
                 if(o1%2==0 && o2%2 !=0){
-                    return -1;
+                    return 1;
                 }
                 else if(o2%2==0 && o1%2 !=0){
-                    return 1;
+                    return -1;
                 }
                 else
                 return o1.compareTo(o2);

@@ -2,7 +2,6 @@ package com.think.core.java.singleton;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
-import java.util.Arrays;
 
 /**
  * Created by esha on 19/08/17.
@@ -69,20 +68,23 @@ class Singleton implements Cloneable, Serializable{
         System.out.println("object created !");
     }
 
-    static class  SingletonLoader{
-        public static Singleton instance = new Singleton();
-    }
-
     public static Singleton getInstance(){
         return SingletonLoader.instance;
     }
 
-   /* @Override
+    @Override
     protected Object clone() throws CloneNotSupportedException {
+        if (SingletonLoader.instance != null) {
+            throw new CloneNotSupportedException("Can not create 2 instance of singleton class");
+        }
         return super.clone();
-    }*/
+    }
 
-  /*  protected Object readResolve(){
+    protected Object readResolve() {
         return SingletonLoader.instance;
-    }*/
+    }
+
+    static class SingletonLoader {
+        public static Singleton instance = new Singleton();
+    }
 }

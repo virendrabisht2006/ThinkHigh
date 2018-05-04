@@ -14,19 +14,20 @@ public class BinaryTreeZigZagTraversal {
 
     public static Node root;
 
-    class Node
-    {
-        int data;
-        Node left, right;
-
-        public Node(int d)
+    /* Driver program to test the above functions */
+    public static void main(String[] args)
         {
-            data = d;
-            left = right = null;
+            BinaryTreeZigZagTraversal tree = new BinaryTreeZigZagTraversal();
+            tree.root = tree.new Node(1);
+            tree.root.left = tree.new Node(2);
+            tree.root.right = tree.new Node(3);
+            tree.root.left.left = tree.new Node(7);
+            tree.root.left.right = tree.new Node(6);
+            tree.root.right.left = tree.new Node(5);
+            tree.root.right.right = tree.new Node(4);
+            System.out.println("Spiral order traversal of Binary Tree is ");
+            tree.printSpiral(tree.root);
         }
-    }
-
-
 
         // Function to print the spiral traversal of tree
         void printSpiral(Node node)
@@ -54,19 +55,13 @@ public class BinaryTreeZigZagTraversal {
         {
             if (node == null)
                 return 0;
-            else
-            {
 
             /* compute the height of each subtree */
-                int lheight = height(node.left);
-                int rheight = height(node.right);
+            return 1 + Math.max(
+                    height(node.left), height(node.right)
+            );
 
-            /* use the larger one */
-                if (lheight > rheight)
-                    return (lheight + 1);
-                else
-                    return (rheight + 1);
-            }
+
         }
 
         /* Print nodes at a given level */
@@ -90,18 +85,15 @@ public class BinaryTreeZigZagTraversal {
                 }
             }
         }
-        /* Driver program to test the above functions */
-        public static void main(String[] args)
+
+    class Node {
+        int data;
+        Node left, right;
+
+        public Node(int d)
         {
-            BinaryTreeZigZagTraversal tree = new BinaryTreeZigZagTraversal();
-            tree.root = tree.new Node(1);
-            tree.root.left = tree.new Node(2);
-            tree.root.right = tree.new Node(3);
-            tree.root.left.left = tree.new Node(7);
-            tree.root.left.right = tree.new Node(6);
-            tree.root.right.left = tree.new Node(5);
-            tree.root.right.right = tree.new Node(4);
-            System.out.println("Spiral order traversal of Binary Tree is ");
-            tree.printSpiral(tree.root);
+            data = d;
+            left = right = null;
         }
+    }
 }

@@ -12,11 +12,19 @@ public class NestedClass {
         this.classId = classId;
     }
 
-    public String getClassName() {
+    public static void main(String[] args) {
+        NestedClass nestedClass = new NestedClass("OuerClass", 1);
+        InnerClass innerClass = nestedClass.new InnerClass("INner claas", 100);
+        innerClass.outerClassAtrr();
+
+        System.out.println(innerClass.getClassId() + innerClass.getClassName());
+    }
+
+    public String getOUterClassName() {
         return className+classId;
     }
 
-    public int getClassId() {
+    public int getOUterClassId() {
         return classId;
     }
 
@@ -24,14 +32,22 @@ public class NestedClass {
         private String className;
         private int classId;
 
-        private void outerClassAtrr(){
-            System.out.println("ClassName: "+getClassName());
+        InnerClass(String inClass, int inNumber) {
+            this.className = inClass;
+            this.classId = inNumber;
         }
-    }
 
-    public static void main(String[] args) {
-        NestedClass nestedClass = new NestedClass("OuerClass",1);
-        InnerClass innerClass = nestedClass.new InnerClass();
-        innerClass.outerClassAtrr();
+        public String getClassName() {
+            return className;
+        }
+
+        public int getClassId() {
+            return classId;
+        }
+
+        private void outerClassAtrr() {
+            System.out.println("ClassName: " + getOUterClassName());
+            System.out.println("Access outer class variable: " + getOUterClassId());
+        }
     }
 }

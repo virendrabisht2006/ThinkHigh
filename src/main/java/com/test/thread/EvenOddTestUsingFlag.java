@@ -1,14 +1,12 @@
 package com.test.thread;
 
-import java.util.concurrent.Semaphore;
-
 /**
  * Created by esha on 10/05/16.
  */
 public class EvenOddTestUsingFlag {
 
     public static final int RANGE=20;
-    public static  boolean oddFlag =true;
+    public volatile static boolean oddFlag = true;
     private static int counter=1;
     public static void main(String ...args) {
 
@@ -35,7 +33,7 @@ public class EvenOddTestUsingFlag {
                         System.out.println(Thread.currentThread().getName() + " : " + counter);
 
                         counter++;
-                        oddFlag =true;
+                        oddFlag = true;
                         Thread.sleep(100);
                     }
                 }

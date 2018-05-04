@@ -13,11 +13,14 @@ public class ExecutorServiceTest {
         System.out.println("Excited to see..");
         ExecutorServiceTest executorServiceTest = new ExecutorServiceTest();
 
-        ExecutorService executorService= Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
         List<Integer> integerList = new CopyOnWriteArrayList<>();
         List<Callable<Integer>> callableList = new ArrayList<>();
-        callableList.add(executorServiceTest.new Sleeper(1000*60));
-        callableList.add(executorServiceTest.new Sleeper(1000*60));
+
+        for (int i = 100; i <= 500; i = i + 100) {
+            callableList.add(executorServiceTest.new Sleeper(i * 60));
+            // callableList.add(executorServiceTest.new Sleeper(1000 * 60));
+        }
 
 
         try {
@@ -38,7 +41,7 @@ public class ExecutorServiceTest {
         }
         long t2 = System.currentTimeMillis();
         executorService.shutdown();
-        System.out.println("Total Time Taken: "+(t2-t1)/60000);
+        System.out.println("Total Time Taken: " + (t2 - t1) / 1000 + " sec");
     }
 
     class Sleeper implements Callable<Integer> {

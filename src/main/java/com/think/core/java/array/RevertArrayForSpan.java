@@ -1,7 +1,6 @@
 package com.think.core.java.array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,13 +31,13 @@ public class RevertArrayForSpan {
         System.out.println(a.length);
 
         int lastRevertIndex =0;
-        int length = 1;
+        int spanToReverse = 1;
         int to =1;
         while(to <= a.length){
             Collections.reverse(list.subList(lastRevertIndex, to));
             lastRevertIndex = to;
-            to = lastRevertIndex + length + 1;
-            length = length + 1;
+            spanToReverse = spanToReverse + 1;
+            to = lastRevertIndex + spanToReverse;
 
             if(to > a.length && !(lastRevertIndex>=a.length)){
                 to = a.length;
