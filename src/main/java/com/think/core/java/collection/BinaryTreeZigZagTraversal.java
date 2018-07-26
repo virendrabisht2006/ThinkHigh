@@ -73,7 +73,7 @@ public class BinaryTreeZigZagTraversal {
                 System.out.print(node.data + " ");
             else if (level > 1)
             {
-                if (ltr != false)
+                if (ltr == true)
                 {
                     printGivenLevel(node.left, level - 1, ltr);
                     printGivenLevel(node.right, level - 1, ltr);

@@ -61,7 +61,7 @@ public class BinarySearch {
 
         }
         else{
-            index = binarySerach(a, 0, middle, element);
+            index = binarySerach(a, lowIndex, middle, element);
         }
        return index;
     }

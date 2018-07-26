@@ -1,5 +1,8 @@
 package com.think.core.java.collection;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by esha on 01/06/16.
  */
@@ -14,11 +17,14 @@ public class LinkedList{
     }
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
-        linkedList.add(20);
-        linkedList.add(15);
-        linkedList.add(30);
-        linkedList.add(200);
-        linkedList.add(40);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(3);
+        linkedList.add(2);
+        linkedList.add(6);
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(6);
 
         linkedList.display(linkedList.start);
 
@@ -31,9 +37,27 @@ public class LinkedList{
 
       //  linkedList.display(linkedList.start);
 
-        System.out.println("---Reverse List-----");
-        Node start1= linkedList.reverseList(linkedList.start);
-        linkedList.display(start1);
+        // System.out.println("---Reverse List-----");
+        // Node start1= linkedList.reverseList(linkedList.start);
+        //linkedList.display(start1);
+
+        System.out.println("------");
+        linkedList.display(distinctNode(linkedList.start));
+    }
+
+    private static Node distinctNode(Node head) {
+        Node temp = head, previous = head;
+        Map<Integer, Integer> repeated = new HashMap<>();
+        while (temp != null) {
+            if (repeated.containsKey(temp.data)) {
+                previous.next = temp.next;
+            } else if (temp != head) {
+                previous = previous.next;
+            }
+            repeated.putIfAbsent(temp.data, temp.data);
+            temp = temp.next;
+        }
+        return head;
     }
 
     public void add(int data){
@@ -72,15 +96,6 @@ public class LinkedList{
       }
     }
 
-    class Node{
-        int data;
-        Node next;
-        Node(int data){
-            this.data =data;
-            this.next=null;
-        }
-    }
-
     public Node reverseList(Node current){
         Node  previous=null, nextNode=null;
         while (current !=null){
@@ -91,5 +106,15 @@ public class LinkedList{
         }
 
        return previous;
+    }
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 }

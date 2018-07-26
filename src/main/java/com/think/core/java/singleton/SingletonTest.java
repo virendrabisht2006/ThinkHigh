@@ -42,15 +42,12 @@ public class SingletonTest {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println("after reflection");
-        System.out.println(s1.hashCode()+" = "+ s.hashCode());
 
-        //break singleton with clone
-        /* Singleton s3 = Singleton.getInstance();
-         Singleton s4 = (Singleton) s.clone();
+        //break singleton with clone if clonable not implemented
+       /* Singleton s3 = Singleton.getInstance();
+        Singleton s4 = (Singleton) s.clone();
 
         System.out.println(s3.hashCode()+" = "+ s4.hashCode());*/
-
 
         }
 

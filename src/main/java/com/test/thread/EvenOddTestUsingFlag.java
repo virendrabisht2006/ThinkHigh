@@ -7,7 +7,7 @@ public class EvenOddTestUsingFlag {
 
     public static final int RANGE=20;
     public volatile static boolean oddFlag = true;
-    private static int counter=1;
+    private volatile static int counter = 1;
     public static void main(String ...args) {
 
         EvenOddTestUsingFlag evenOddTestUsingSemaphore = new EvenOddTestUsingFlag();

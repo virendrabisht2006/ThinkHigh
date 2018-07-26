@@ -5,4 +5,5 @@ package com.think.core.java.oops;
  */
 
 public interface InterfaceTest {
+     int number = 10;
 }

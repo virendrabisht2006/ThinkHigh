@@ -4,7 +4,7 @@ package com.think.core.java.thread;
  * Created by esha on 02/10/16.
  */
 public class AdobeThreadProgram {
-    private static boolean isSuspended = false;
+    private volatile static boolean isSuspended = false;
 
     public static void main(String[] args) throws Exception {
         System.out.println("Starting main thread..");
